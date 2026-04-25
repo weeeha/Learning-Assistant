@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "packageManager": "pnpm@10.32.0",
   "scripts": {
-    "dev": "pnpm --filter @la/web run dev & pnpm --filter @la/desktop run tauri dev",
+    "dev": "pnpm --filter @la/desktop run tauri dev",
     "dev:web": "pnpm --filter @la/web run dev",
     "dev:tauri": "pnpm --filter @la/desktop run tauri dev",
     "build": "pnpm --filter @la/web run build && pnpm --filter @la/desktop run tauri build",
