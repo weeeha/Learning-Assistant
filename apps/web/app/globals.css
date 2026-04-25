@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: oklch(0.18 0.008 264);
+  --color-bg-elev: oklch(0.22 0.01 264);
+  --color-bg-panel: oklch(0.16 0.008 264 / 0.85);
+  --color-border: oklch(0.32 0.01 264);
+  --color-fg: oklch(0.96 0.005 264);
+  --color-fg-muted: oklch(0.7 0.01 264);
+  --color-accent: oklch(0.74 0.16 196);
+  --color-accent-fg: oklch(0.15 0.01 264);
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  background: transparent;
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.recording-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
