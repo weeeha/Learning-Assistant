@@ -65,12 +65,14 @@ apps/
 
 ```bash
 pnpm install
-cp .env.example .env
+cp apps/web/.env.example apps/web/.env
 # fill in AI_GATEWAY_API_KEY  (https://vercel.com/dashboard → AI Gateway → API Keys)
 
 pnpm db:generate   # generate Drizzle SQL migrations (already committed)
 pnpm db:migrate    # apply to ~/Library/Application Support/LearningAssistant/db.sqlite
 ```
+
+> The `.env` file lives inside `apps/web/` — that's where Next.js loads it from. Putting it at the workspace root won't work.
 
 ## Development
 

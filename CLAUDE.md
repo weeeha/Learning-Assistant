@@ -89,6 +89,7 @@ After changing [schema.ts](apps/web/lib/schema.ts) you **must** run `pnpm db:gen
 - **better-sqlite3 build script** — needs to be in the root `pnpm.onlyBuiltDependencies` allowlist or the native binary won't build. Already configured.
 - **Production bundling** — `next.config.ts` sets `output: 'standalone'` but `tauri build` is **not yet** wired up to bundle Node + the standalone server as a sidecar. v1 is dev-mode only. When you tackle this, the pattern is: ship a Node binary as a Tauri sidecar, spawn it on app boot, point all windows at `http://127.0.0.1:<port>`.
 - **Path with spaces** — the dev path on the original machine is `/Users/nickv/Learning Assistant/`. Cargo and pnpm both handle it fine, but if you ever shell out without quoting paths, you'll get bitten.
+- **`.env` location** — Next.js loads env files from `apps/web/.env` (the Next project root), not the workspace root. If you find `AI_GATEWAY_API_KEY` is unset at runtime, that's almost always why.
 - **The `nodes` table is empty in v1** — it's reserved for v2's auto-extracted learning nodes. Don't repurpose it.
 
 ## When adding a new feature
