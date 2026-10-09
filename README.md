@@ -10,21 +10,21 @@ The main window (`/main`) with demo notes, run with `pnpm dev:web` against a thr
 
 ## Features (v1)
 
-- **Floating panel** — borderless, always-on-top, visible across Spaces and over fullscreen apps. Toggle with `⌘⇧L`.
-- **Three tabs** — Capture, Chat, Sessions.
+- **Floating panel** - borderless, always-on-top, visible across Spaces and over fullscreen apps. Toggle with `⌘⇧L`.
+- **Three tabs** - Capture, Chat, Sessions.
   - Capture: take a screenshot (interactive macOS selection), record a voice note (auto-transcribed via Whisper), drop files, or type a quick note.
   - Chat: streaming chat with Claude that sees the active session's captures as context.
   - Sessions: browse recent sessions, jump into the full-size **main window** for review.
-- **Local-first** — everything (chat, captures, files) lives in `~/Library/Application Support/LearningAssistant/`. No cloud DB.
-- **One env var** — `AI_GATEWAY_API_KEY` and you're done. `AI_CHAT_MODEL` and `AI_TRANSCRIBE_MODEL` optionally override the defaults (`anthropic/claude-sonnet-4-6`, `openai/whisper-1`); see `apps/web/.env.example`.
+- **Local-first** - everything (chat, captures, files) lives in `~/Library/Application Support/LearningAssistant/`. No cloud DB.
+- **One env var** - `AI_GATEWAY_API_KEY` and you're done. `AI_CHAT_MODEL` and `AI_TRANSCRIBE_MODEL` optionally override the defaults (`anthropic/claude-sonnet-4-6`, `openai/whisper-1`); see `apps/web/.env.example`.
 
 ## Stack
 
-- **Desktop shell** — [Tauri 2.x](https://tauri.app) (Rust core + macOS-specific NSPanel-style window tweaks).
-- **UI** — [Next.js 16](https://nextjs.org) App Router (React 19), one codebase serving both the panel (`/panel`) and main window (`/main`).
-- **AI** — Claude Sonnet 4.6 via [Vercel AI Gateway](https://vercel.com/docs/ai-gateway), [AI SDK v6](https://ai-sdk.dev). Implicit gateway routing through `"anthropic/claude-sonnet-4-6"` model strings.
-- **Voice** — OpenAI Whisper via the same Gateway.
-- **Storage** — local SQLite (`better-sqlite3` + Drizzle), files on disk in app-data dir.
+- **Desktop shell** - [Tauri 2.x](https://tauri.app) (Rust core + macOS-specific NSPanel-style window tweaks).
+- **UI** - [Next.js 16](https://nextjs.org) App Router (React 19), one codebase serving both the panel (`/panel`) and main window (`/main`).
+- **AI** - Claude Sonnet 4.6 via [Vercel AI Gateway](https://vercel.com/docs/ai-gateway), [AI SDK v6](https://ai-sdk.dev). Implicit gateway routing through `"anthropic/claude-sonnet-4-6"` model strings.
+- **Voice** - OpenAI Whisper via the same Gateway.
+- **Storage** - local SQLite (`better-sqlite3` + Drizzle), files on disk in app-data dir.
 
 ## Repo layout
 
@@ -62,7 +62,7 @@ apps/
 - macOS 13+ (NSPanel-style panel is macOS-only for v1)
 - Node.js 24+
 - pnpm 10+
-- Rust (stable) — `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y`
+- Rust (stable) - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y`
 - Xcode Command Line Tools (`xcode-select --install`)
 
 ## Setup
@@ -76,7 +76,7 @@ pnpm db:generate   # generate Drizzle SQL migrations (already committed)
 pnpm db:migrate    # apply to ~/Library/Application Support/LearningAssistant/db.sqlite
 ```
 
-> The `.env` file lives inside `apps/web/` — that's where Next.js loads it from. Putting it at the workspace root won't work.
+> The `.env` file lives inside `apps/web/` - that's where Next.js loads it from. Putting it at the workspace root won't work.
 
 ## Development
 
