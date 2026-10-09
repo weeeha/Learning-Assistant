@@ -4,6 +4,10 @@ A macOS desktop Learning Assistant: an always-visible floating panel + companion
 
 This is **v1**: floating-panel + chat + manual capture. Continuous screen recording (ScreenPipe), auto learning-node extraction, and plan generation are deferred to v2.
 
+![Main window of the Learning Assistant showing a session with three note captures](docs/screenshots/main-window.webp)
+
+The main window (`/main`) with demo notes, run with `pnpm dev:web` against a throwaway data directory.
+
 ## Features (v1)
 
 - **Floating panel** — borderless, always-on-top, visible across Spaces and over fullscreen apps. Toggle with `⌘⇧L`.
@@ -12,7 +16,7 @@ This is **v1**: floating-panel + chat + manual capture. Continuous screen record
   - Chat: streaming chat with Claude that sees the active session's captures as context.
   - Sessions: browse recent sessions, jump into the full-size **main window** for review.
 - **Local-first** — everything (chat, captures, files) lives in `~/Library/Application Support/LearningAssistant/`. No cloud DB.
-- **One env var** — `AI_GATEWAY_API_KEY` and you're done.
+- **One env var** — `AI_GATEWAY_API_KEY` and you're done. `AI_CHAT_MODEL` and `AI_TRANSCRIBE_MODEL` optionally override the defaults (`anthropic/claude-sonnet-4-6`, `openai/whisper-1`); see `apps/web/.env.example`.
 
 ## Stack
 
@@ -90,6 +94,7 @@ If you only want the web UI (no Tauri shell):
 ```bash
 pnpm dev:web
 # then open http://localhost:3000/main or http://localhost:3000/panel
+# (the root path / redirects to /main)
 ```
 
 ## How the pieces talk
