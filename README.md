@@ -1,5 +1,13 @@
 # Learning Assistant
 
+**Problem.** Learning material arrives as screenshots, voice notes, files and chat, and an AI chat cannot help with material it never saw.
+
+**Idea.** One always-on-top macOS panel (toggled with ⌘⇧L) captures all four into local learning sessions, and the chat with Claude reads the active session's captures as context.
+
+**Built.** A Tauri 2 floating panel plus a Next.js 16 main window, with chats and captures kept in local SQLite and files on disk. This is v1 and runs in dev mode only; production bundling is deferred. 10 commits on 5 days, Apr 25 to Oct 25, 2026.
+
+**Decision.** Every AI call goes through the Vercel AI Gateway with plain `provider/model` strings, and the `@ai-sdk/anthropic` and `@ai-sdk/openai` packages are never imported. The Gateway gives one API key, observability and fallbacks.
+
 A macOS desktop Learning Assistant: an always-visible floating panel + companion web UI that captures screenshots, voice notes, files, and chat conversations into local learning sessions, powered by Claude (via the Vercel AI Gateway).
 
 This is **v1**: floating-panel + chat + manual capture. Continuous screen recording (ScreenPipe), auto learning-node extraction, and plan generation are deferred to v2.
